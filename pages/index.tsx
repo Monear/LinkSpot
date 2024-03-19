@@ -1,16 +1,17 @@
 // app/page.tsx
 
-import { getProfile } from "@/sanity/sanity.query";
-import type { ProfileType } from "@/types";
+import { getProfile, getProducts } from "@/sanity/sanity.query";
+import type { ProfileType, ProductType } from "@/types";
 import HeroSvg from "../app/(site)/icons/HeroSvg";
 import RootLayout from "../app/(site)/components/global/Layout";
-import Layout from '../app/(site)/components/global/Layout';
+import Products from "../app/(site)/components/global/Product";
 
 type HomeProps = {
   profile: ProfileType[];
+  products: ProductType[];
 };
 
-export default function Home({ profile }: HomeProps) {
+export default function Home({ profile, products }: HomeProps) {
   return (
     <RootLayout>
       <main className="max-w-7xl mx-auto lg:px-16 px-6">
@@ -43,6 +44,7 @@ export default function Home({ profile }: HomeProps) {
             ))}
           <HeroSvg />
         </section>
+        <Products products={products} />
       </main>
     </RootLayout>
   );
@@ -50,10 +52,12 @@ export default function Home({ profile }: HomeProps) {
 
 export async function getServerSideProps() {
   const profile: ProfileType[] = await getProfile();
+  const products: ProductType[] = await getProducts();
 
   return {
     props: {
       profile,
+      products,
     },
   };
 }

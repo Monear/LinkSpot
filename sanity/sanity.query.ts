@@ -31,16 +31,27 @@ export async function getProjects() {
     );
   }
 
-  export async function getSingleProject(slug: string) {
-    return client.fetch(
-      groq`*[_type == "project" && slug.current == $slug][0]{
-        _id,
-        name,
-        projectUrl,
-        coverImage { alt, "image": asset->url },
-        tagline,
-        description
-      }`,
-      { slug }
-    );
-  }
+export async function getSingleProject(slug: string) {
+  return client.fetch(
+    groq`*[_type == "project" && slug.current == $slug][0]{
+      _id,
+      name,
+      projectUrl,
+      coverImage { alt, "image": asset->url },
+      tagline,
+      description
+    }`,
+    { slug }
+  );
+}
+
+export async function getProducts() {
+  return client.fetch(
+    groq`*[_type == "product"]{
+      _id,
+      title,
+      description,
+      image {alt, "image": asset->url},
+    }`
+  );
+}
