@@ -11,7 +11,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             <h1>{post.title}</h1>
             <p>{post.author}</p>
             <p>{post.publishedAt}</p>
-            <img src={post.mainImage.image} alt={post.mainImage.alt || ""} />
+            <img src={post.mainImage} alt={post.title} /> {/* Change this line */}
             <PortableText value={post.body} />
         </Layout>
     );

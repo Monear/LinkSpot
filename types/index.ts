@@ -41,15 +41,13 @@ export type ProjectType = {
     };
   };
 
+  // types.ts
   export type BlogPostType = {
     _id: string;
     title: string;
     slug: string;
     author: string;
     publishedAt: string;
-    mainImage: {
-      alt: string | null;
-      image: string;
-    };
-    body: PortableTextBlock[];
+    mainImage: string; // Change this line
+    body: any;
   };

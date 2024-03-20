@@ -20,10 +20,10 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
                     >
                         {post.mainImage && (
                             <Image
-                                src={post.mainImage.image}
+                                src={post.mainImage}
                                 width={60}
                                 height={60}
-                                alt={post.mainImage.alt || ""}
+                                alt={post.title}
                                 className="bg-zinc-800 rounded-md p-2 w-1/4 h-24 object-cover mr-4"
                             />
                         )}
