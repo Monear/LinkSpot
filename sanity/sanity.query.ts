@@ -27,9 +27,10 @@ export async function getProjects() {
         "slug": slug.current,
         tagline,
         "logo": logo.asset->url,
+        description
       }`
     );
-  }
+}
 
 export async function getSingleProject(slug: string) {
   return client.fetch(
@@ -52,6 +53,35 @@ export async function getProducts() {
       title,
       description,
       image {alt, "image": asset->url},
+    }`
+  );
+}
+
+export async function getSingleBlogPost(slug: string) {
+  return client.fetch(
+    groq`*[_type == "blogPost" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+      author,
+      publishedAt,
+      "mainImage": mainImage.asset->url,
+      body
+    }`,
+    { slug }
+  );
+}
+
+export async function getBlogPosts() {
+  return client.fetch(
+    groq`*[_type == "blogPost"] | order(publishedAt desc) [0..2] {
+      _id,
+      title,
+      "slug": slug.current,
+      author,
+      publishedAt,
+      "mainImage": mainImage.asset->url,
+      body
     }`
   );
 }

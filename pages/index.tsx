@@ -1,17 +1,21 @@
 // app/page.tsx
 
-import { getProfile, getProducts } from "@/sanity/sanity.query";
-import type { ProfileType, ProductType } from "@/types";
+import { getProfile, getProducts, getProjects, getBlogPosts } from "@/sanity/sanity.query";
+import BlogPosts from "../app/(site)/components/global/BlogPosts";
+import type { ProfileType, ProductType, ProjectType, BlogPostType } from "@/types";
 import HeroSvg from "../app/(site)/icons/HeroSvg";
 import RootLayout from "../app/(site)/components/global/Layout";
 import Products from "../app/(site)/components/global/Product";
+import Projects from "../app/(site)/components/global/Projects";
 
 type HomeProps = {
   profile: ProfileType[];
   products: ProductType[];
+  projects: ProjectType[];
+  posts: BlogPostType[];
 };
 
-export default function Home({ profile, products }: HomeProps) {
+export default function Home({ profile, products, projects, posts }: HomeProps) {
   return (
     <RootLayout>
       <main className="max-w-7xl mx-auto lg:px-16 px-6">
@@ -45,6 +49,8 @@ export default function Home({ profile, products }: HomeProps) {
           <HeroSvg />
         </section>
         <Products products={products} />
+        <Projects projects={projects} />
+        <BlogPosts posts={posts} />
       </main>
     </RootLayout>
   );
@@ -53,11 +59,15 @@ export default function Home({ profile, products }: HomeProps) {
 export async function getServerSideProps() {
   const profile: ProfileType[] = await getProfile();
   const products: ProductType[] = await getProducts();
+  const projects: ProjectType[] = await getProjects();
+  const posts: BlogPostType[] = await getBlogPosts();
 
   return {
     props: {
       profile,
       products,
+      projects,
+      posts,
     },
   };
 }

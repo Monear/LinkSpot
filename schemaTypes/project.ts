@@ -1,3 +1,6 @@
+// schemaTypes/project.ts
+// Define the project schema type
+
 import { BiPackage } from "react-icons/bi";
 import { defineField } from "sanity";
 

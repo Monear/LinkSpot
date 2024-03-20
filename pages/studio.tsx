@@ -8,8 +8,6 @@ import RootLayout from "../app/(site)/components/global/StudioLayout";
 
 export default function Studio() {
   return(
-  <RootLayout>
     <NextStudio config={config} />
-  </RootLayout>
   );
 }

@@ -40,3 +40,16 @@ export type ProjectType = {
       alt: string;
     };
   };
+
+  export type BlogPostType = {
+    _id: string;
+    title: string;
+    slug: string;
+    author: string;
+    publishedAt: string;
+    mainImage: {
+      alt: string | null;
+      image: string;
+    };
+    body: PortableTextBlock[];
+  };

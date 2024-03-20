@@ -27,6 +27,14 @@ export default function Navbar() {
                 Projects
               </Link>
             </li>
+            <li>
+              <Link
+                href="/blog"
+                className="hover:text-purple-400 duration-300"
+              >
+                Blog
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

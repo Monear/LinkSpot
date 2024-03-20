@@ -1,4 +1,4 @@
-// app/pages/[project].tsx
+// app/pages/projects/[project].tsx
 
 import Image from "next/image";
 import { Metadata } from "next";
