@@ -3,8 +3,7 @@
 import "../../../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navbar from "./Navbar";
-import Footer from "./FooterAll";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
       <div className={`${inter.className} bg-zinc-900 text-white RootLayout`}>
-        <Navbar />
         {children}
-        <Footer />
       </div>
   );
 }

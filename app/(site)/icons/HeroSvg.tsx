@@ -1,5 +1,10 @@
-export default function HeroSvg() {
+type HeroProps = {
+  className?: string;
+};
+
+export default function HeroSvg({ className }: HeroProps) {
     return (
+      <div className={className}>
       <svg viewBox="0 0 1273 906" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g>
           <path
@@ -27,5 +32,6 @@ export default function HeroSvg() {
           </clipPath>
         </defs>
       </svg>
+      </div>
     );
   }

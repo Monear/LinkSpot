@@ -6,11 +6,12 @@ import type { BlogPostType } from "@/types";
 
 type BlogPostsProps = {
     posts: BlogPostType[];
+    className?: string;
 };
 
-export default function BlogPosts({ posts }: BlogPostsProps) {
+export default function BlogPosts({ posts, className }: BlogPostsProps) {
     return (
-        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
+        <section className={`grid gap-4 md:grid-cols-3 md:gap-6 ${className}`}>
             {posts.map((post) => {
                 return (
                     <Link
@@ -35,6 +36,6 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
                     </Link>
                 );
             })}
-        </div>
+        </section>
     );
 }

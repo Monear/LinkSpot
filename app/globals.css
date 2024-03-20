@@ -31,3 +31,12 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ...Snap styling... */
+.section {
+  min-height: 100vh;
+}
+html, body, #__next, .RootLayout, main {
+  height: 100vh;
+  overflow: auto;
+}

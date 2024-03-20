@@ -12,11 +12,12 @@ type ProductType = {
 
 type ProductProps = {
   products: ProductType[];
+  className?: string;
 };
 
-export default function Product({ products }: ProductProps) {
+export default function Product({ products, className }: ProductProps) {
     return (
-        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
+        <section className={`grid gap-4 md:grid-cols-3 md:gap-6 ${className}`}>
             {products.map((product: ProductType) => (
                 <div key={product._id} className="flex items-center p-4 border rounded shadow">
                     <img className="w-1/4 h-24 object-cover mr-4" src={product.image.image} alt={product.image.alt} />
@@ -26,6 +27,6 @@ export default function Product({ products }: ProductProps) {
                     </div>
                 </div>
             ))}
-        </div>
+        </section>
     );
 }

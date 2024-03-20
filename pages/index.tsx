@@ -3,10 +3,15 @@
 import { getProfile, getProducts, getProjects, getBlogPosts } from "@/sanity/sanity.query";
 import BlogPosts from "../app/(site)/components/global/BlogPosts";
 import type { ProfileType, ProductType, ProjectType, BlogPostType } from "@/types";
-import HeroSvg from "../app/(site)/icons/HeroSvg";
-import RootLayout from "../app/(site)/components/global/Layout";
+import RootLayout from "../app/(site)/components/global/IndexLayout";
 import Products from "../app/(site)/components/global/Product";
 import Projects from "../app/(site)/components/global/Projects";
+import Contact from "../app/(site)/components/global/Contact";
+import Navbar from "@/app/(site)/components/global/Navbar";
+import Footer from "@/app/(site)/components/global/FooterIndex";
+import { useEffect, useRef } from 'react';
+import createScrollSnap from 'scroll-snap';
+
 
 type HomeProps = {
   profile: ProfileType[];
@@ -16,14 +21,46 @@ type HomeProps = {
 };
 
 export default function Home({ profile, products, projects, posts }: HomeProps) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let unbind = () => {};
+
+    if (containerRef.current) {
+      const { bind, unbind: snapUnbind } = createScrollSnap(containerRef.current, {
+        snapDestinationX: '0%',
+        snapDestinationY: '100%',
+        timeout: 100,
+        duration: 300,
+        threshold: 0.2,
+        snapStop: false,
+        easing: t => t, // linear easing
+      });
+
+      // Bind the scroll snap behavior
+      bind();
+
+      // Assign unbind to the unbind function returned by createScrollSnap
+      unbind = snapUnbind;
+    }
+
+    return () => {
+      // Unbind on cleanup
+      unbind();
+    };
+  }, []);
+  
   return (
     <RootLayout>
-      <main className="max-w-7xl mx-auto lg:px-16 px-6">
-        <section className="flex xl:flex-row flex-col xl:items-center items-start xl:justify-center justify-between gap-x-12 lg:mt-32 mt-20 mb-16">
+      <main ref={containerRef} className="">
+
+          <Navbar />
+
+        <section className="flex xl:flex-row flex-col xl:items-center items-start xl:justify-center justify-between lg:mt- mt- mb- section">
           {profile &&
             profile.map((data) => (
               <div key={data._id} className="lg:max-w-2xl max-w-2xl">
-                <h1 className="text-3xl font-bold tracking-tight sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight lg:min-w-[700px] min-w-full">
+                <h1 className="text-3xl font-bold tracking-tight sm:text-5xl mb-6 leading-tight">
                   {data.headline}
                 </h1>
                 <p className="text-base text-zinc-400 leading-relaxed">
@@ -46,11 +83,16 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
                 </ul>
               </div>
             ))}
-          <HeroSvg />
         </section>
-        <Products products={products} />
-        <Projects projects={projects} />
-        <BlogPosts posts={posts} />
+        <Products products={products} className="section" />
+        <Projects projects={projects} className="section" />
+        <BlogPosts posts={posts} className="section" />
+        <div className="relative">
+          <section className="section">
+            <Contact />
+          </section>
+          <Footer />
+        </div>
       </main>
     </RootLayout>
   );

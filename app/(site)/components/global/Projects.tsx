@@ -6,11 +6,12 @@ import type { ProjectType } from "@/types";
 
 type ProjectsProps = {
     projects: ProjectType[];
+    className?: string;
 };
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects({ projects,className }: ProjectsProps) {
     return (
-        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
+        <section className={`grid gap-4 md:grid-cols-3 md:gap-6 ${className}`}>
             {projects.map((project) => {
                 return (
                     <Link
@@ -35,6 +36,6 @@ export default function Projects({ projects }: ProjectsProps) {
                     </Link>
                 );
             })}
-        </div>
+        </section>
     );
 }
