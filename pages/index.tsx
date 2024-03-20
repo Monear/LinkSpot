@@ -30,8 +30,8 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
       const { bind, unbind: snapUnbind } = createScrollSnap(containerRef.current, {
         snapDestinationX: '0%',
         snapDestinationY: '90%',
-        timeout: 100,
-        duration: 300,
+        timeout: 20,
+        duration: 100,
         threshold: 0.2,
         snapStop: false,
         easing: t => t, // linear easing
