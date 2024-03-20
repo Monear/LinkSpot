@@ -34,7 +34,8 @@ body {
 
 /* ...Snap styling... */
 .section {
-  min-height: 100vh;
+  min-height: 90vh;
+  padding: 20px;
 }
 html, body, #__next, .RootLayout, main {
   height: 100vh;

@@ -1,4 +1,4 @@
-// app/page.tsx
+// pages/index.tsx
 
 import { getProfile, getProducts, getProjects, getBlogPosts } from "@/sanity/sanity.query";
 import BlogPosts from "../app/(site)/components/global/BlogPosts";
@@ -29,7 +29,7 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
     if (containerRef.current) {
       const { bind, unbind: snapUnbind } = createScrollSnap(containerRef.current, {
         snapDestinationX: '0%',
-        snapDestinationY: '100%',
+        snapDestinationY: '90%',
         timeout: 100,
         duration: 300,
         threshold: 0.2,
@@ -52,9 +52,8 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
   
   return (
     <RootLayout>
-      <main ref={containerRef} className="">
-
-          <Navbar />
+      <main ref={containerRef} className="w-9/10 mx-auto">
+        <Navbar />
 
         <section className="flex xl:flex-row flex-col xl:items-center items-start xl:justify-center justify-between lg:mt- mt- mb- section">
           {profile &&
@@ -66,21 +65,6 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
                 <p className="text-base text-zinc-400 leading-relaxed">
                   {data.shortBio}
                 </p>
-                <ul className="flex items-center gap-x-6 my-10">
-                  {Object.entries(data.socialLinks)
-                    .sort()
-                    .map(([key, value], id) => (
-                      <li key={id}>
-                        <a
-                          href={value}
-                          rel="noreferer noopener"
-                          className="flex items-center gap-x-3 mb-5 hover:text-purple-400 duration-300"
-                        >
-                          {key[0].toUpperCase() + key.toLowerCase().slice(1)}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
               </div>
             ))}
         </section>
@@ -97,7 +81,6 @@ export default function Home({ profile, products, projects, posts }: HomeProps) 
     </RootLayout>
   );
 }
-
 export async function getServerSideProps() {
   const profile: ProfileType[] = await getProfile();
   const products: ProductType[] = await getProducts();
