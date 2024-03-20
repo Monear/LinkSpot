@@ -39,6 +39,12 @@ const blogPost = {
             options: { hotspot: true },
         },
         {
+            name: "teaser",
+            title: "Teaser",
+            type: "string",
+            description: "Short preview text of this blog post",
+        },
+        {
             name: "body",
             title: "Body",
             type: "array",

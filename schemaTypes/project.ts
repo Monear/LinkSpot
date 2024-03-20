@@ -57,6 +57,12 @@ const project = {
       ],
     },
     {
+      name: "teaser",
+      title: "Teaser",
+      type: "string",
+      description: "Short preview text of this project",
+  },
+    {
       name: "description",
       title: "Description",
       type: "array",

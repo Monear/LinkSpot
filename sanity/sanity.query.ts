@@ -27,6 +27,7 @@ export async function getProjects() {
         "slug": slug.current,
         tagline,
         "logo": logo.asset->url,
+        teaser,
         description
       }`
     );
@@ -40,6 +41,7 @@ export async function getSingleProject(slug: string) {
       projectUrl,
       coverImage { alt, "image": asset->url },
       tagline,
+      teaser,
       description
     }`,
     { slug }
@@ -66,6 +68,7 @@ export async function getSingleBlogPost(slug: string) {
       author,
       publishedAt,
       "mainImage": mainImage.asset->url,
+      teaser,
       body
     }`,
     { slug }
@@ -81,6 +84,7 @@ export async function getBlogPosts() {
       author,
       publishedAt,
       "mainImage": mainImage.asset->url,
+      teaser,
       body
     }`
   );

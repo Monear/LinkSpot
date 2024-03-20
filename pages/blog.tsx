@@ -1,4 +1,4 @@
-// app/blog/page.tsx
+// app/pages/blog.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { getBlogPosts } from "@/sanity/sanity.query";
@@ -37,6 +37,7 @@ export default function Blog({ posts }: { posts: BlogPostType[] }) {
                             <div>
                                 <h2 className="font-semibold mb-1">{post.title}</h2>
                                 <div className="text-sm text-zinc-400">{post.author}</div>
+                                <p className="text-sm text-zinc-400">{post.teaser}</p>
                             </div>
                         </Link>
                     ))}

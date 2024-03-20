@@ -31,7 +31,7 @@ export default function Projects({ projects,className }: ProjectsProps) {
                         <div>
                             <h2 className="font-semibold mb-1 text-lg font-bold text-center">{project.name}</h2>
                             <div className="text-sm text-zinc-400">{project.tagline}</div>
-                            <PortableText value={project.description} />
+                            <p className="text-sm text-zinc-400">{project.teaser}</p>
                         </div>
                     </Link>
                 );

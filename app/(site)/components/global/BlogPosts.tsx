@@ -31,7 +31,7 @@ export default function BlogPosts({ posts, className }: BlogPostsProps) {
                         <div>
                             <h2 className="font-semibold mb-1 text-lg font-bold text-center">{post.title}</h2>
                             <div className="text-sm text-zinc-400">{post.author}</div>
-                            <PortableText value={post.body} />
+                            <p className="text-sm text-zinc-400">{post.teaser}</p>
                         </div>
                     </Link>
                 );

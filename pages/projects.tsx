@@ -43,6 +43,7 @@ export default function Project({ projects }: { projects: ProjectType[] }) {
           <div>
             <h2 className="font-semibold mb-1">{project.name}</h2>
             <div className="text-sm text-zinc-400">{project.tagline}</div>
+            <p className="text-sm text-zinc-400">{project.teaser}</p>
           </div>
         </Link>
       ))}

@@ -28,6 +28,7 @@ export type ProjectType = {
       alt: string | null;
       image: string;
     };
+    teaser: string;
     description: PortableTextBlock[];
   };
 
@@ -49,5 +50,6 @@ export type ProjectType = {
     author: string;
     publishedAt: string;
     mainImage: string; // Change this line
+    teaser: string;
     body: any;
   };
